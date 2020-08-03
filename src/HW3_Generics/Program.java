@@ -1,6 +1,13 @@
 package HW3_Generics;
-import java.util.Map;
+import java.util.*;
 
+class MyComparator implements Comparator<Integer> {
+
+    public int compare(Integer a, Integer b){
+
+        return a.compareTo(b);
+    }
+}
 public class Program {
     static void printMap (CountMap o){
         Map innerMap = o.toMap();
@@ -9,8 +16,8 @@ public class Program {
 
 
     public static void main(String[] argv) {
-        testCountMapClass();
-
+        //testCountMapClass();
+        testCollectionUtils();
     }
     static void testCountMapClass(){
         CountMap<Integer> map = new CountMapClass<>();
@@ -63,8 +70,35 @@ public class Program {
         System.out.println("= map 1");
         printMap(map);
         System.out.println("Result in map 3");
-        map.toMap((Map)map3);
+        map.toMap(map3.toMap());
         printMap(map3);*/
     }
 
+    static void testCollectionUtils(){
+        List<Number> myArr = CollectionUtils.newArrayList();
+        myArr.add(1);
+        myArr.add(2);
+        myArr.add(3);
+
+        List<Integer> myArr2 = CollectionUtils.newArrayList();
+        myArr2.add(11);
+        myArr2.add(12);
+        myArr2.add(13);
+
+        CollectionUtils.addAll(myArr2, myArr);
+        //System.out.println(myArr.toString());
+
+        //System.out.println(CollectionUtils.indexOf(myArr,11));
+
+        //System.out.println(CollectionUtils.limit(myArr,3).toString());
+
+        //CollectionUtils.removeAll(myArr,myArr2);
+        //System.out.println(myArr.toString());
+
+        //System.out.println(CollectionUtils.containsAny(myArr,myArr2));
+        //System.out.println(CollectionUtils.containsAll(myArr2,myArr));
+
+        //System.out.println(CollectionUtils.range(Arrays.asList(8,1,3,5,6, 4), 3, 6));
+        //System.out.println(CollectionUtils.range(Arrays.asList(8,1,3,5,6, 4), 3, 6, new MyComparator()));
+    }
 }

@@ -21,7 +21,7 @@ public class CountMapClass<E> implements CountMap<E> {
     public int getCount(Object o) {
         int count = 0;
         if (innerData.containsKey(o)){
-            count = innerData.get((E) o);
+            count = innerData.get(o);
         }
         return count;
     }
@@ -40,7 +40,7 @@ public class CountMapClass<E> implements CountMap<E> {
     }
 
     @Override
-    public void addAll(CountMap<E> source) {
+    public void addAll(CountMap source) {
         Map<E, Integer> sourceMap = source.toMap();
         Set<Map.Entry<E, Integer>> entries = sourceMap.entrySet();
         for (Map.Entry<E, Integer> elem: entries) {
